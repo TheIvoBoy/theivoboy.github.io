@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex & Eve — Invitație de Nuntă</title>
+    
+    <!-- Fonturi Elegante din Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Montserrat:wght@200;300;400;500&family=Pinyon+Script&family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Stiluri Generale (Estetică Minimalistă & Editorială) --- */
+        :root {
+            --bg-color: #f9f6f0; /* Crem cald de hârtie premium */
+            --text-dark: #1c1c1c; /* Negru-cărbune delicat */
+            --text-muted: #5c5c5c;
+            --accent: #c5b495; /* Aur fin / șampanie */
+            --serif-font: 'Cormorant Garamond', serif;
+            --sans-font: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            font-family: var(--sans-font);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        section {
+            padding: 120px 24px;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--serif-font);
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            color: var(--text-dark);
+        }
+
+        p {
+            font-weight: 300;
+            font-size: 1.05rem;
+            color: var(--text-muted);
+        }
+
+        .divider {
+            height: 1px;
+            width: 70px;
+            background-color: var(--accent);
+            margin: 30px auto;
+        }
+
+        /* --- STILURI PENTRU EFECTUL DE SCROLL REVEAL (FADE-IN SMOOTH) --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s cubic-bezier(0.215, 0.610, 0.355, 1.000), 
+                        transform 1.2s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            will-change: transform, opacity;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Hero Section cu animație elegantă de pornire --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 34px;
+            position: relative;
+            background: linear-gradient(rgba(249, 246, 240, 0.082), rgba(249, 246, 240, 0.88)), 
+                        url('IMG_2220.JPEG') no-repeat center center/cover;
+            overflow: hidden;
+        }
+
+        /* Elementele din Hero au propriile animații de intrare controlate la încărcarea paginii */
+        .hero-animate-title {
+            opacity: 0;
+            transform: scale(0.95) translateY(15px);
+            animation: heroFadeIn 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.3s;
+        }
+
+        .hero-animate-text {
+            opacity: 0;
+            transform: translateY(10px);
+            animation: heroFadeIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: 0.8s;
+        }
+
+        @keyframes heroFadeIn {
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Pinyon Script', cursive; 
+            font-size: 6.5rem; 
+            letter-spacing: 0px; 
+            margin: 10px 0;
+            font-weight: 400;
+            color: rgb(80, 80, 80);
+            text-transform: none; 
+        }
+
+
+        .hero p {
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: rgb(80, 80, 80);
+        }
+
+        /* --- Countdown Section --- */
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .countdown-number {
+            font-family: var(--serif-font);
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .countdown-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--text-muted);
+            margin-top: 10px;
+        }
+
+        /* --- Secțiunea Poveste / Banner --- */
+        .story-banner {
+            max-width: none;
+            width: 100%;
+            padding: 260px 24px;
+            position: relative;
+            background: linear-gradient(rgba(249, 246, 240, 0.42), rgba(249, 246, 240, 0.88)), 
+                        url('IMG_2195.JPEG') no-repeat 48% 50% / cover;
+            background-attachment: scroll; 
+            box-shadow: inset 0 20px 40px rgba(0,0,0,0.02), inset 0 -20px 40px rgba(0,0,0,0.02);
+        }
+
+                .story-banner-2 {
+            max-width: none;
+            width: 100%;
+            padding: 260px 24px;
+            position: relative;
+            background: linear-gradient(rgba(249, 246, 240, 0.42), rgba(249, 246, 240, 0.88)), 
+                        url('dresscodemasina.JPG') no-repeat center center/cover;
+            background-attachment: scroll; 
+            box-shadow: inset 0 20px 40px rgba(0,0,0,0.02), inset 0 -20px 40px rgba(0,0,0,0.02);
+        }
+
+                .story-banner-2 H2 {
+                        font-family: 'Pinyon Script', cursive; 
+            font-size: 5rem; 
+            letter-spacing: 0px; 
+            margin: 10px 0;
+            font-weight: 400;
+            color: rgb(80, 80, 80);
+            text-transform: none; }
+
+            .story-banner-2 .all-black {
+                font-weight: 900;
+            }
+
+        .story-content {
+            max-width: 650px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* --- Secțiunea Program sub formă de Banner --- */
+        .program-banner {
+            max-width: none;
+            width: 100%;
+            padding: 200px 24px;
+            position: relative;
+            background: linear-gradient(rgba(249, 246, 240, 0.52), rgba(249, 246, 240, 0.88)), 
+                        url('castel.jpg') no-repeat center center/cover;
+            background-attachment: scroll; 
+            box-shadow: inset 0 20px 40px rgba(0,0,0,0.02), inset 0 -20px 40px rgba(0,0,0,0.02);
+            
+        }
+
+        .program-content {
+            max-width: 650px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .program-content h2 {
+            font-family: 'Pinyon Script', cursive;
+        }
+
+        /* --- Programul Zilei --- */
+        .timeline {
+            margin-top: 60px;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            
+            
+        }
+
+        .timeline-item h3 {
+            font-size: 2.1rem;
+            margin-bottom: 8px;
+            
+        }
+
+        .time {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #b98f41;
+            margin-bottom: 8px;
+            font-weight: 450;
+            
+        }
+
+        /* --- PREMIUM RSVP CARD DESIGN --- */
+        .rsvp-card {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.024), rgba(255, 255, 255, 0.1));
+    border: 1px solid rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(197, 180, 149, 0.3); 
+            padding: 70px 50px;
+            max-width: 650px;
+            margin: 50px auto 0 auto;
+            box-shadow: 0 15px 40px rgba(28, 28, 28, 0.03);
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+            min-height: 380px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Ramă interioară dublă */
+        .rsvp-card::after {
+            content: '';
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            right: 16px;
+            bottom: 16px;
+            border: 1px solid rgba(197, 180, 149, 0.15);
+            pointer-events: none;
+        }
+
+        /* --- Clase animații RSVP Multi-pas --- */
+        .rsvp-step {
+            display: none;
+            position: relative;
+            z-index: 2;
+            animation: fadeInState 0.6s ease forwards;
+        }
+
+        .rsvp-step.active {
+            display: block;
+        }
+
+        .step-title-italic {
+            font-family: var(--serif-font);
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+        }
+
+        /* --- STEP 1: GUEST COUNT SELECTOR --- */
+        .guest-count-selector {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .count-btn {
+            background-color: transparent;
+            border: 1px solid rgba(197, 180, 149, 0.4);
+            color: var(--text-dark);
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            font-family: var(--sans-font);
+            font-size: 1.1rem;
+            font-weight: 300;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .count-btn:hover {
+            border-color: var(--text-dark);
+            background-color: rgba(249, 246, 240, 0.6);
+        }
+
+        .count-btn.active {
+            background-color: var(--text-dark);
+            border-color: var(--text-dark);
+            color: #ffffff;
+        }
+
+        /* --- STEP 2: DYNAMIC FORM --- */
+        .rsvp-form-dynamic {
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 40px; 
+        }
+
+        .guest-entry {
+            border-bottom: 1px dashed rgba(197, 180, 149, 0.25);
+            padding-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            text-align: left;
+            animation: fadeInState 0.4s ease forwards;
+        }
+
+        .guest-entry:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .guest-entry-header {
+            font-family: var(--serif-font);
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--accent);
+            letter-spacing: 0.5px;
+            margin-bottom: -5px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .form-group label {
+            font-family: var(--serif-font);
+            font-size: 1.2rem;
+            font-style: italic;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+            color: var(--text-dark);
+        }
+
+        /* Inputs minimaliste */
+        .rsvp-card input[type="text"] {
+            padding: 10px 0;
+            border: none;
+            border-bottom: 1px solid rgba(197, 180, 149, 0.4);
+            background-color: transparent;
+            font-family: var(--sans-font);
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: var(--text-dark);
+            outline: none;
+            transition: border-color 0.4s ease;
+        }
+
+        .rsvp-card input[type="text"]:focus {
+            border-bottom-color: var(--text-dark);
+        }
+
+        .rsvp-card input[type="text"]::placeholder {
+            color: #c4c4c4;
+            font-style: italic;
+            font-family: var(--serif-font);
+            font-size: 1rem;
+        }
+
+        /* Opțiuni Prezență */
+        .attendance-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 5px;
+        }
+
+        .attendance-btn {
+            background-color: transparent;
+            border: 1px solid rgba(197, 180, 149, 0.4);
+            color: var(--text-dark);
+            padding: 12px;
+            font-family: var(--sans-font);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+            text-align: center;
+        }
+
+        .attendance-btn:hover {
+            border-color: var(--text-dark);
+            background-color: rgba(249, 246, 240, 0.4);
+        }
+
+        .attendance-btn.active {
+            background-color: var(--text-dark);
+            border-color: var(--text-dark);
+            color: #ffffff;
+        }
+
+        /* Adăugare oaspete suplimentar (peste 5) */
+        .add-more-container {
+            display: none;
+            text-align: left;
+            margin-top: 15px;
+            border-top: 1px solid rgba(197, 180, 149, 0.15);
+            padding-top: 20px;
+        }
+
+        .btn-add-guest {
+            background-color: transparent;
+            border: 1px dashed var(--accent);
+            color: var(--text-dark);
+            padding: 12px 20px;
+            font-family: var(--sans-font);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            border-radius: 2px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-add-guest:hover {
+            background-color: rgba(197, 180, 149, 0.1);
+            border-style: solid;
+            letter-spacing: 2.5px;
+        }
+
+        /* --- BUTOANE NAVIGARE --- */
+        .form-navigation {
+            display: flex;
+            gap: 15px;
+            margin-top: 35px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-nav {
+            flex: 1;
+            background-color: transparent;
+            color: var(--text-dark);
+            border: 1px solid var(--text-dark);
+            padding: 16px;
+            font-family: var(--sans-font);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            border-radius: 2px;
+        }
+
+        .btn-nav:hover {
+            background-color: var(--text-dark);
+            color: #ffffff;
+            letter-spacing: 4px;
+        }
+
+        .btn-back {
+            flex: 0.4;
+            border-color: rgba(197, 180, 149, 0.5);
+            color: var(--text-muted);
+            letter-spacing: 2px;
+        }
+
+        .btn-back:hover {
+            background-color: rgba(197, 180, 149, 0.1);
+            color: var(--text-dark);
+            border-color: var(--accent);
+            letter-spacing: 2px;
+        }
+
+        /* Ecranul elegant de succes */
+        .success-state {
+            display: none;
+            text-align: center;
+            padding: 40px 10px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInState 0.8s ease forwards;
+        }
+
+        .success-monogram {
+            font-family: var(--serif-font);
+            font-size: 3.2rem;
+            color: var(--accent);
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+
+        .success-state h3 {
+            font-size: 2.4rem;
+            margin-bottom: 15px;
+        }
+
+        @keyframes fadeInState {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Responsive (Ajustări Mobil) --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3.5rem; } 
+            .story-banner, .program-banner { padding: 130px 20px; }
+            .countdown-container { gap: 20px; }
+            .countdown-number { font-size: 2.3rem; }
+            .rsvp-card { padding: 45px 25px; margin: 30px 0; }
+            .attendance-options { grid-template-columns: 1fr; }
+            section { padding: 80px 20px; }
+            .count-btn { width: 48px; height: 48px; font-size: 1rem; }
+            .btn-add-guest { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. HERO SECTION (Cu clase specifice pentru animația fină la deschidere) -->
+    <div class="hero">
+        <h1 class="hero-animate-title">Alex & Eve</h1>
+        <p class="hero-animate-text">SAVE THE DATE</p>
+        <p class="hero-animate-text" style="font-size: 1.1rem; margin-top: 5px;">20.09.2026</p>
+    </div>
+
+    <!-- 2. COUNTDOWN (Secțiune pregătită pentru apariția treptată la scroll - clasa 'reveal') -->
+    <section class="reveal">
+        <h2>Numărăm zilele...</h2>
+        <div class="divider"></div>
+        <div class="countdown-container">
+            <div class="countdown-item">
+                <span class="countdown-number" id="days">00</span>
+                <span class="countdown-label">Zile</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="hours">00</span>
+                <span class="countdown-label">Ore</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="minutes">00</span>
+                <span class="countdown-label">Min</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="seconds">00</span>
+                <span class="countdown-label">Sec</span>
+            </div>
+        </div>
+    </section>
+
+    <hr style="border: 0; height: 1px; background: rgba(197, 180, 149, 0.2); max-width: 80%; margin: 0 auto;">
+
+    <!-- 3. POVESTEA NOASTRĂ (Clasa 'reveal' pentru a apărea fluid de sub banner) -->
+    <section class="story-banner reveal">
+        <div class="story-content">
+            <div class="divider" style="margin: 25px auto;"></div>
+            <p><em><strong>„Funia împletită în trei nu se rupe ușor.” (Eclesiastul 4:12)</strong></em></p>
+            <div class="divider"></div>
+            <p><em>Cu Dumnezeu în centrul vieții noastre, alegem să pășim împreună pe același drum. Vă invităm cu drag să ne fiți alături în ziua în care vom spune „Da” înaintea Lui</em></p>
+        </div>
+    </section>
+
+    <hr style="border: 0; height: 1px; background: rgba(197, 180, 149, 0.2); max-width: 80%; margin: 0 auto;">
+
+    <!-- ZONĂ ALBĂ DE RESPIRAȚIE (Blank space, identică ca fundal cu cea de la numărarea zilelor, fără text) -->
+    <section class="reveal" style="padding: 50px 24px; background-color: var(--bg-color); max-width: none;"></section>
+
+    <hr style="border: 0; height: 1px; background: rgba(197, 180, 149, 0.2); max-width: 80%; margin: 0 auto;">
+
+    <!-- 4. PROGRAMUL ZILEI (Clasa 'reveal' + Transformare în Banner cu Imagine) -->
+    <section class="reveal program-banner">
+        <div class="program-content">
+            <h2>Programul Evenimentului</h2>
+            <div class="divider"></div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="time">Ora 16:00</div>
+                    <h3>Ceremonia Religioasă</h3>
+                    <p>Domeniul Lupaș</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="time">Ora 17:30</div>
+                    <h3>Celebrarea Evenimentului</h3>
+                    <p>Poenița Castelului - Domeniul Lupaș</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr style="border: 0; height: 1px; background: rgba(197, 180, 149, 0.2); max-width: 80%; margin: 0 auto;">
+
+    <hr style="border: 0; height: 1px; background: rgba(197, 180, 149, 0.2); max-width: 80%; margin: 0 auto;">
+
+    <!-- ZONĂ ALBĂ DE RESPIRAȚIE (Blank space, identică ca fundal cu cea de la numărarea zilelor, fără text) -->
+    <section class="reveal" style="padding: 50px 24px; background-color: var(--bg-color); max-width: none;"></section>
+
+    <hr style="border: 0; height: 1px; background: rgba(197, 180, 149, 0.2); max-width: 80%; margin: 0 auto;">
+
+        <section class="story-banner-2 reveal">
+        <div class="story-content">
+            <h2>Dress Code</h2>
+            <p class="all-black">ALL BLACK</p>
+            <p>Ne dorim ca toți invitații să poarte ținute în nuanțe de negru, pentru a crea o atmosferă elegantă și unitară</p>
+        </div>
+    </section>
+
+    <!-- 5. RSVP SECTION (Clasa 'reveal') -->
+    <section id="rsvp" class="reveal">
+        <h2>Confirmare Prezență</h2>
+        <p style="margin-top: 15px;">Vă rugăm să ne confirmați prezența până la data de 1 Septembrie 2026</p>
+        <div class="divider"></div>
+        
+        <div class="rsvp-card">
+            
+            <!-- PASUL 1: Selecție număr de oaspeți -->
+            <div class="rsvp-step active" id="step-1">
+                <div class="step-title-italic">Pentru câți oaspeți doriți să confirmați?</div>
+                <div class="guest-count-selector">
+                    <button type="button" class="count-btn" data-count="1">1</button>
+                    <button type="button" class="count-btn" data-count="2">2</button>
+                    <button type="button" class="count-btn" data-count="3">3</button>
+                    <button type="button" class="count-btn" data-count="4">4</button>
+                    <button type="button" class="count-btn" data-count="5">5+</button>
+                </div>
+            </div>
+
+            <!-- PASUL 2: Formular Dinamic Generat Automant -->
+            <div class="rsvp-step" id="step-2">
+                <form id="wedding-rsvp-form-dynamic" class="rsvp-form-dynamic">
+                    
+                    <!-- Aici se vor genera automat câmpurile pentru fiecare oaspete din JavaScript -->
+                    <div id="dynamic-guests-container"></div>
+
+                    <!-- Buton discret adăugare oaspete suplimentar (Apare doar pentru selecția 5+) -->
+                    <div class="add-more-container" id="add-more-container">
+                        <button type="button" class="btn-add-guest" id="btn-add-guest">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            Adaugă încă un oaspete
+                        </button>
+                    </div>
+
+                    <!-- Butoane Navigare în cadrul Pasului 2 -->
+                    <div class="form-navigation">
+                        <button type="button" class="btn-nav btn-back" id="btn-back-step">Înapoi</button>
+                        <button type="submit" class="btn-nav" id="submit-btn">Trimite</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Mesajul de Succes (Actualizat cu monograma corectă A & E) -->
+            <div class="success-state" id="success-state">
+                <div class="success-monogram">A & E</div>
+                <h3>Vă mulțumim!</h3>
+                <p class="success-text">Răspunsurile dumneavoastră au fost înregistrate cu succes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- --- JAVASCRIPT: CRONOMETRU --- -->
+    <script>
+        const weddingDate = new Date("2026-09-20T16:00:00").getTime();
+
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
+
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("days").innerHTML = "00";
+                document.getElementById("hours").innerHTML = "00";
+                document.getElementById("minutes").innerHTML = "00";
+                document.getElementById("seconds").innerHTML = "00";
+            }
+        }, 1000);
+    </script>
+
+    <!-- --- JAVASCRIPT: DETECTARE SCROLL SMOOTH REVEAL --- -->
+    <script>
+        // Folosim un Intersection Observer pentru a detecta momentul în care elementele devin vizibile pe ecran
+        document.addEventListener("DOMContentLoaded", function() {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    } else {
+                        // Scoatem clasa când elementul iese din ecran pentru a reporni animația la scroll up
+                        entry.target.classList.remove('active');
+                    }
+                });
+            }, {
+                root: null, // se raportează la viewport-ul browserului
+                threshold: 0.15 // animația pornește când 15% din secțiune este vizibilă
+            });
+
+            reveals.forEach(reveal => {
+                revealObserver.observe(reveal);
+            });
+        });
+    </script>
+
+    <!-- --- JAVASCRIPT: RSVP INTERACTIV & FUNCTIONAL --- -->
+    <script>
+        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbybTXdQ5RxzXARwvWUKPArwoivYi-I69bIbqoCcEi6djMvhS8Zh371UKnBmImz5B4bI/exec";
+
+        const countButtons = document.querySelectorAll('.count-btn');
+        const step1 = document.getElementById('step-1');
+        const step2 = document.getElementById('step-2');
+        const btnBackStep = document.getElementById('btn-back-step');
+        const dynamicGuestsContainer = document.getElementById('dynamic-guests-container');
+        const addMoreContainer = document.getElementById('add-more-container');
+        const btnAddGuest = document.getElementById('btn-add-guest');
+        const rsvpForm = document.getElementById('wedding-rsvp-form-dynamic');
+        const submitBtn = document.getElementById('submit-btn');
+        const successState = document.getElementById('success-state');
+
+        let totalGuestsSelected = 1;
+        let isFivePlusOption = false;
+
+        countButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                totalGuestsSelected = parseInt(this.getAttribute('data-count'));
+                isFivePlusOption = (totalGuestsSelected === 5);
+                
+                generateDynamicFormFields(totalGuestsSelected);
+
+                if (isFivePlusOption) {
+                    addMoreContainer.style.display = "block";
+                } else {
+                    addMoreContainer.style.display = "none";
+                }
+
+                step1.style.display = "none";
+                step2.style.display = "block";
+            });
+        });
+
+        btnAddGuest.addEventListener('click', function() {
+            totalGuestsSelected++;
+            addGuestField(totalGuestsSelected);
+        });
+
+        btnBackStep.addEventListener('click', function() {
+            step2.style.display = "none";
+            step1.style.display = "block";
+        });
+
+        function generateDynamicFormFields(count) {
+            dynamicGuestsContainer.innerHTML = '';
+
+            for (let i = 1; i <= count; i++) {
+                addGuestField(i);
+            }
+        }
+
+        function addGuestField(index) {
+            const guestCard = document.createElement('div');
+            guestCard.classList.add('guest-entry');
+            guestCard.setAttribute('data-guest-index', index);
+
+            guestCard.innerHTML = `
+                <div class="guest-entry-header">Oaspete ${index}</div>
+                
+                <div class="form-group">
+                    <label for="name-${index}">Nume Complet</label>
+                    <input type="text" id="name-${index}" class="guest-name" required placeholder="Numele și prenumele oaspetelui">
+                </div>
+
+                <div class="form-group">
+                    <label>Vă rugăm să alegeți opțiunea</label>
+                    <input type="hidden" id="attendance-hidden-${index}" class="guest-attendance" required>
+                    <div class="attendance-options">
+                        <button type="button" class="attendance-btn" data-value="Prezent">Prezent, abia aștept!</button>
+                        <button type="button" class="attendance-btn" data-value="Absent">Din păcate, nu pot</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="preferences-${index}">Preferințe Meniu / Mențiuni speciale</label>
+                    <input type="text" id="preferences-${index}" class="guest-preferences" placeholder="Ex: Meniu vegetarian, alergii, scaun copil">
+                </div>
+            `;
+
+            dynamicGuestsContainer.appendChild(guestCard);
+            initAttendanceButtonsForField(guestCard);
+        }
+
+        function initAttendanceButtonsForField(cardElement) {
+            const buttons = cardElement.querySelectorAll('.attendance-btn');
+            const hiddenInput = cardElement.querySelector('.guest-attendance');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    buttons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    hiddenInput.value = this.getAttribute('data-value');
+                });
+            });
+        }
+
+        rsvpForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const guestEntries = document.querySelectorAll('.guest-entry');
+            let validationFailed = false;
+
+            guestEntries.forEach(entry => {
+                const attendance = entry.querySelector('.guest-attendance').value;
+                if (!attendance) {
+                    validationFailed = true;
+                }
+            });
+
+            if (validationFailed) {
+                alert("Vă rugăm să alegeți opțiunea de prezență (Prezent / Absent) pentru fiecare oaspete.");
+                return;
+            }
+
+            submitBtn.disabled = true;
+            btnBackStep.disabled = true;
+            btnAddGuest.disabled = true;
+            submitBtn.innerText = "Se trimite...";
+
+            const submissionPromises = [];
+
+            guestEntries.forEach(entry => {
+                const nameValue = entry.querySelector('.guest-name').value;
+                const attendanceValue = entry.querySelector('.guest-attendance').value;
+                const preferencesValue = entry.querySelector('.guest-preferences').value;
+
+                const data = new FormData();
+                data.append('Nume', nameValue);
+                data.append('Prezenta', attendanceValue);
+                data.append('Preferinte', preferencesValue);
+
+                const request = fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    body: data,
+                    mode: 'no-cors'
+                });
+
+                submissionPromises.push(request);
+            });
+
+            Promise.all(submissionPromises)
+                .then(() => {
+                    step2.style.transition = "opacity 0.4s ease";
+                    step2.style.opacity = "0";
+
+                    setTimeout(() => {
+                        step2.style.display = "none";
+                        successState.style.display = "block";
+                    }, 400);
+                })
+                .catch(error => {
+                    console.error('Error during RSVP transmission:', error);
+                    alert("A apărut o problemă la înregistrarea datelor. Vă rugăm să reîncercați.");
+                    submitBtn.disabled = false;
+                    btnBackStep.disabled = false;
+                    btnAddGuest.disabled = false;
+                    submitBtn.innerText = "Trimite";
+                });
+        });
+    </script>
+</body>
+</html>
